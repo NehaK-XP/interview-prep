@@ -24,3 +24,5 @@ const startServer = async () => {
         console.error("Error starting the server", error)
     }
 }
+
+startServer()

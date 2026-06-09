@@ -5,11 +5,14 @@ import { serve } from "inngest/express"
 import { ENV } from "./lib/env.js"
 import { connectDB } from "./lib/db.js"
 import { inngest, functions } from "./lib/inngest.js"
+import { fileURLToPath } from "url"
 
 
 const app = express() 
 
-const __dirname = path.resolve()
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const rootDir = path.resolve(__dirname, "../../")
 
 // middleware
 app.use(express.json())
@@ -26,10 +29,11 @@ app.get("/api/health", (req, res) => {
 })
 
 if (ENV.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  app.use(express.static(path.join(rootDir, "frontend", "dist")));
+  console.log(rootDir)
 
   app.get("/{*any}", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+    res.sendFile(path.join(rootDir, "frontend", "dist", "index.html"));
   });
 }
 

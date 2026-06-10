@@ -9,6 +9,7 @@ import { inngest, functions } from "./lib/inngest.js"
 import { fileURLToPath } from "url"
 import { protectRoute } from "./middleware/protectRoute.js"
 import chatRoutes from "./routes/chatRoutes.js"
+import sessionRoutes from "./routes/sessionRoutes.js"
 
 
 const app = express() 
@@ -33,6 +34,8 @@ app.get("/api/health", (req, res) => {
 })
 
 app.get("/api/chat", chatRoutes)
+
+app.get("/api/sessions", sessionRoutes)
 
 if (ENV.NODE_ENV === "production") {
   app.use(express.static(path.join(rootDir, "frontend", "dist")));

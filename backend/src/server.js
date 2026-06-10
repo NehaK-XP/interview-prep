@@ -22,7 +22,7 @@ app.use(cors({
     credentials: true
 }))
 
-app.use("/api/inngest", serve({client: inngest, functions }))
+app.use("/api/inngest", serve({client: inngest, functions, signingKey: ENV.INNGEST_SIGNING_KEY }))
 
 app.get("/api/health", (req, res) => {
     res.status(200).json({ msg: "success from api"})
@@ -30,7 +30,6 @@ app.get("/api/health", (req, res) => {
 
 if (ENV.NODE_ENV === "production") {
   app.use(express.static(path.join(rootDir, "frontend", "dist")));
-  console.log(rootDir)
 
   app.get("/{*any}", (req, res) => {
     res.sendFile(path.join(rootDir, "frontend", "dist", "index.html"));

@@ -1,8 +1,9 @@
 import { Inngest } from "inngest"
 import { connectDB } from "./db.js"
 import User from "../models/User.js"
+import { ENV } from "./env.js";
 
-export const inngest = new Inngest({ id: "interview-prep" });
+export const inngest = new Inngest({ id: "interview-prep", eventKey: ENV.INNGEST_EVENT_KEY });
 
 const syncUserToDB = inngest.createFunction(
     {

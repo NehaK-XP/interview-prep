@@ -2,7 +2,6 @@ import { SignInButton, Show, SignOutButton, SignUpButton, UserButton, useUser } 
 import { Navigate, Route, Routes } from 'react-router'
 import HomePage from './pages/HomePage.jsx'
 import DashboardPage from './pages/DashboardPage.jsx'
-import AboutPage from './pages/AboutPage.jsx'
 import ProblemsPage from './pages/ProblemsPage.jsx'
 import { Toaster } from 'react-hot-toast'
 
@@ -18,7 +17,6 @@ function App() {
       <Routes>
         <Route path='/' element={!isSignedIn ? <HomePage /> : <Navigate to={"/dashboard"} />} />
         <Route path='/dashboard' element={isSignedIn ? <DashboardPage /> : <Navigate to={"/"} />} />
-        <Route path='/about' element={<AboutPage />} />
         <Route path='/problems' element={isSignedIn ? <ProblemsPage /> : <Navigate to={"/"} />} />
       </Routes>
 

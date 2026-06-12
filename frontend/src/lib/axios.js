@@ -5,4 +5,4 @@ const axiosInstance = axios.create({
     withCredentials: true // by adding this field, the browser will send the cookies to the server automatically on every single request
 })
 
-export default axios
+export default axiosInstance

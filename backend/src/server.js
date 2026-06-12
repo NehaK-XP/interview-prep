@@ -30,12 +30,12 @@ app.use(clerkMiddleware())
 app.use("/api/inngest", serve({client: inngest, functions, signingKey: ENV.INNGEST_SIGNING_KEY }))
 
 app.get("/api/health", (req, res) => {
-    res.status(200).json({ msg: "success from api"})
+    res.status(200).json({ message: "success from api"})
 })
 
-app.get("/api/chat", chatRoutes)
+app.use("/api/chat", chatRoutes)
 
-app.get("/api/sessions", sessionRoutes)
+app.use("/api/sessions", sessionRoutes)
 
 if (ENV.NODE_ENV === "production") {
   app.use(express.static(path.join(rootDir, "frontend", "dist")));

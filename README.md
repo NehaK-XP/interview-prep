@@ -3,6 +3,8 @@
 
 <img width="1911" height="911" alt="Screenshot from 2026-06-13 02-54-02" src="https://github.com/user-attachments/assets/355ea59d-1c30-476f-9869-f80bb9805c4c" />
 
+Website:
+https://nk-interview-prep.onrender.com/
 
 A full-stack collaborative coding platform for technical interview preparation. Practice LeetCode-style problems in real-time with friends via live video calls, chat, and a shared code editor.
 
